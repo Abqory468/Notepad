@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Notepad-X') }}</title>
+        <title>{{ config('app.name', 'MyNotes') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -93,8 +93,12 @@
                 <!-- Sidebar Header -->
                 <div class="p-4 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between">
                     <div class="flex items-center space-x-2">
-                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center text-white font-bold text-sm shadow-md">N</div>
-                        <span class="text-lg font-bold text-gray-800 dark:text-white">MyNotepad</span>
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center text-white font-bold text-sm shadow-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                              <path d="M12.613 1.258a1.535 1.535 0 0 1 2.13 2.129l-1.905 2.856a8 8 0 0 1-3.56 2.939 4.011 4.011 0 0 0-2.46-2.46 8 8 0 0 1 2.94-3.56l2.855-1.904ZM5.5 8A2.5 2.5 0 0 0 3 10.5a.5.5 0 0 1-.7.459.75.75 0 0 0-.983 1A3.5 3.5 0 0 0 8 10.5 2.5 2.5 0 0 0 5.5 8Z" />
+                            </svg>
+                        </div>
+                        <span class="text-lg font-bold text-gray-800 dark:text-white">MyNotes</span>
 
                     </div>
                     
