@@ -39,12 +39,12 @@ class NoteController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|max:255',
-            'content' => 'required',
-            'color' => 'nullable|string',
-            'folder_id' => 'nullable|exists:folders,id',
-        ]);
+            $validated = $request->validate([
+                'title' => 'required|max:255',
+                'content' => 'required',
+                'color' => 'nullable|string',
+                'folder_id' => 'nullable|exists:folders,id',
+            ]);
 
         $validated['user_id'] = Auth::id();
 
@@ -56,8 +56,7 @@ class NoteController extends Controller
 
     public function show(Note $note)
     {
-        $this->authorize('view', $note);
-        return view('notes.show', compact('note'));
+        return redirect()->route('notes.edit', $note);
     }
 
     public function edit(Note $note)

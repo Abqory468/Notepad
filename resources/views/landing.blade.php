@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Notepad-X</title>
+    <title>MyNotepad</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +25,7 @@
         <nav class="flex items-center justify-between px-10 py-6">
             <div class="flex items-center space-x-3">
                 <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-blue-200">N</div>
-                <span class="text-xl font-extrabold text-gray-800 tracking-tight">Notepad-X</span>
+                <span class="text-xl font-extrabold text-gray-800 tracking-tight">MyNotepad</span>
             </div>
             <div class="flex items-center space-x-4">
                 @auth

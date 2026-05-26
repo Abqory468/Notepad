@@ -39,4 +39,32 @@ class Note extends Model
               ->orWhere('content', 'like', "%{$search}%");
         });
     }
+
+    /**
+     * Format hex color to 6-digit hex and append opacity if requested.
+     *
+     * @param string|null $color
+     * @param string|null $opacity Two-character hex opacity (e.g. '20')
+     * @return string
+     */
+    public static function formatHexColor(?string $color, ?string $opacity = null): string
+    {
+        if (!$color) {
+            return '';
+        }
+
+        // Standardize: strip trailing 'ff' if it is a 9-char hex code (e.g. #ffe065ff)
+        if (strlen($color) === 9 && str_ends_with(strtolower($color), 'ff')) {
+            $color = substr($color, 0, 7);
+        }
+
+        if ($opacity) {
+            if (strtolower($color) === '#ffffff') {
+                return '';
+            }
+            return $color . $opacity;
+        }
+
+        return $color;
+    }
 }

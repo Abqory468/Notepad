@@ -30,7 +30,7 @@ class FolderController extends Controller
             ]);
         }
 
-        return back()->with('status', 'Folder created successfully!');
+        return back()->with('success', 'Folder created successfully!');
     }
 
 
@@ -48,7 +48,7 @@ class FolderController extends Controller
             'name' => $request->name,
         ]);
 
-        return back()->with('status', 'Folder updated successfully!');
+        return back()->with('success', 'Folder updated successfully!');
     }
 
     public function destroy(Folder $folder)
@@ -61,6 +61,6 @@ class FolderController extends Controller
         // In our migration, we used `nullOnDelete()`, so the notes will just lose their folder.
         $folder->delete();
 
-        return back()->with('status', 'Folder deleted successfully!');
+        return redirect()->route('notes.index')->with('success', 'Folder deleted successfully!');
     }
 }
