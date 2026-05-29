@@ -61,7 +61,7 @@
                                 </div>
                     
                                 <div x-data="{ open: false }" class="relative flex-shrink-0">
-                                    <button @click.stop="open = !open" 
+                                    <button @click.prevent.stop="open = !open" 
                                             class="opacity-0 group-hover:opacity-100 p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 rounded transition duration-150">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path>
@@ -75,13 +75,12 @@
                                          style="display: none;">
                                         <form id="pin-form-{{ $note->id }}" method="POST" action="{{ route('notes.toggle-pin', $note) }}" class="hidden">
                                             @csrf
-                                            @method('PATCH')
                                         </form>
-                                        <button @click.stop="document.getElementById('pin-form-{{ $note->id }}').submit()" 
+                                        <button @click.prevent.stop="document.getElementById('pin-form-{{ $note->id }}').submit()" 
                                                 class="w-full text-left px-3 py-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">
                                             {{ $note->is_pinned ? 'Unpin' : 'Pin' }}
                                         </button>
-                                        <button @click.stop="open = false; $dispatch('confirm-delete', { id: {{ $note->id }} })" 
+                                        <button @click.prevent.stop="open = false; confirmDelete({{ $note->id }})" 
                                                 class="w-full text-left px-3 py-1.5 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/30 text-red-500 transition">
                                             Delete
                                         </button>
@@ -91,14 +90,6 @@
                         </div>
                     </a>
 
-                    <!-- Hidden forms untuk delete (opsional) -->
-                    <form id="delete-form-{{ $note->id }}" method="POST" action="{{ route('notes.destroy', $note) }}" class="hidden">
-                        @csrf
-                        @method('DELETE')
-                    </form>
-                    <form id="pin-form-{{ $note->id }}" action="{{ route('notes.toggle-pin', $note) }}" method="POST" class="hidden">
-                        @csrf
-                    </form>
                 @endforeach
             </div>
 

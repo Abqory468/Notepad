@@ -161,7 +161,7 @@
                                         </div>
                                         
                                         <div x-data="{ open: false }" class="relative flex-shrink-0">
-                                            <button @click.stop="open = !open" 
+                                            <button @click.prevent.stop="open = !open" 
                                                     class="opacity-0 group-hover:opacity-100 p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 rounded transition duration-150">
                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path>
@@ -170,11 +170,11 @@
                                             <div x-show="open" @click.outside="open = false" x-transition 
                                                  class="absolute right-0 mt-1 w-28 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg py-1 text-xs text-left z-30" 
                                                  style="display: none;">
-                                                <button @click.stop="open = false; $dispatch('open-rename-folder', { id: folder.id, name: folder.name })" 
+                                                <button @click.prevent.stop="open = false; $dispatch('open-rename-folder', { id: folder.id, name: folder.name })" 
                                                         class="w-full text-left px-3 py-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition">
                                                     Rename
                                                 </button>
-                                                <button @click.stop="open = false; $dispatch('open-delete-folder', { id: folder.id, name: folder.name })" 
+                                                <button @click.prevent.stop="open = false; $dispatch('open-delete-folder', { id: folder.id, name: folder.name })" 
                                                         class="w-full text-left px-3 py-1.5 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/30 text-red-500 transition">
                                                     Delete
                                                 </button>
