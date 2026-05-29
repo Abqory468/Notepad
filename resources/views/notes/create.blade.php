@@ -22,6 +22,22 @@
                         </div>
 
                         <div>
+                            <!-- Folder Selection -->
+                            <div class="mt-4">
+                                <select name="folder_id" id="folder_id" class="w-full sm:w-1/3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 focus:border-yellow-500 focus:ring-yellow-500 text-gray-700 dark:text-white px-4 py-2.5 transition-colors">
+                                    <option value="">No Folder (Uncategorized)</option>
+                                    @foreach($folders as $folder)
+                                        <option value="{{ $folder->id }}" {{ old('folder_id', request('folder_id')) == $folder->id ? 'selected' : '' }}>
+                                            {{ $folder->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('folder_id')
+                                    <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                        <div>
                             <div class="mt-6">
     <div class="border border-gray-100 dark:border-gray-700 rounded-2xl overflow-hidden bg-gray-50/50 dark:bg-gray-900/50">
         <div id="editor" class="bg-white dark:bg-gray-800 min-h-[300px] text-gray-700 dark:text-gray-300 text-base border-none">{!! old('content') !!}</div>

@@ -5,7 +5,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                     <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
                 </svg>
-                <span class="text-xl font-bold text-gray-900 dark:text-white">{{ old('title', $note->title) }}</h5>
+                <span class="text-xl font-bold text-gray-900 dark:text-white">{{ old('title', $note->title) }}</span>
             </a>
         </div>
     </x-slot>
@@ -24,6 +24,22 @@
                     <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
                 @enderror
             </div>
+
+            <div>
+                <!-- Folder Selection -->
+                <div class="mt-4">
+                    <select name="folder_id" id="folder_id" class="w-full sm:w-1/3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 focus:border-yellow-500 focus:ring-yellow-500 text-gray-700 dark:text-white px-4 py-2.5 transition-colors">
+                        <option value="">No Folder (Uncategorized)</option>
+                        @foreach($folders as $folder)
+                            <option value="{{ $folder->id }}" {{ old('folder_id', $note->folder_id) == $folder->id ? 'selected' : '' }}>
+                                {{ $folder->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('folder_id')
+                        <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
+                    @enderror
+                </div>
 
             <div>
                 <div class="border border-gray-100 dark:border-gray-700 rounded-2xl overflow-hidden bg-gray-50/50 dark:bg-gray-900/50">

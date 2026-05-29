@@ -50,7 +50,7 @@ class NoteController extends Controller
 
         Note::create($validated);
 
-        return redirect()->route('notes.index')
+        return redirect()->route('notes.index', $request->folder_id ? ['folder_id' => $request->folder_id] : [])
             ->with('success', 'Note created successfully!');
     }
 
@@ -79,7 +79,7 @@ class NoteController extends Controller
 
         $note->update($validated);
 
-        return redirect()->route('notes.index')
+        return redirect()->route('notes.index', $request->folder_id ? ['folder_id' => $request->folder_id] : [])
             ->with('success', 'Note updated successfully!');
     }
 
